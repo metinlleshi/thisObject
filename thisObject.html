@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var MyLibrary = {
+            thisx: this,//global object
+            func1: function(){
+                var this1=this; // MyLibrary Object
+                var func2=function(){
+                    var this2=this;//global object
+                    var x = {temp:36,this6:this/*global object */};
+                    var func3 = function(){
+                        var this3 = this;//global object
+                        console.log(this1);
+                        console.log(this2);
+                        console.log(this3);
+                        console.log(x.this6);
+                    };
+                    func3();
+                };
+                func2();
+            },
+            info: {height:180,weight:89,this4:this/*global object*/, test:function(){var this5=this/*info object*/;console.log(this5)}}
+        }
+
+        console.log(MyLibrary.thisx);
+        console.log(MyLibrary.info.this4);
+        MyLibrary.func1();
+        MyLibrary.info.test();
+    </script>
+</body>
+</html>
